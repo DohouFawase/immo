@@ -15,7 +15,7 @@ import PropertyGallery from "@/components/home/contents/PropertyGallery";
 
 const formatPrice = (price: number) => new Intl.NumberFormat("fr-FR").format(price);
 
-export default async function PropertyDetailPage({ params }: PageProps<"/(home)/biens/[id]">) {
+export default async function PropertyDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const listing = demoListings.find((item) => item.id === Number(id));
   if (!listing) notFound();
